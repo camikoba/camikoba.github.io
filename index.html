@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Site da Cami</title>
+        <script src="bd.js"></script>
+        <script src="index.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Camila Kobayashi</h1>
+        </header>
+
+        <main>
+            <section>
+                <h3>Conversor Celsius >> Fahrenheit</h3>
+                <input
+                    type="number"
+                    placeholder="Temperatura em Celsius"
+                    id="temperatura-celsius"
+                />
+                <input
+                    type="button"
+                    value="Converter!"
+                    onclick="converteParaFahrenheit()"
+                />
+
+                <input type="text" id="resultado-fahrenheit" readonly />
+            </section>
+
+            <section>
+                <h3>Registro BD</h3>
+                <input type="text" id="nome-usuario" placeholder="Nome" />
+                <input type="number" id="idade-usuario" placeholder="Idade" />
+                <input type="button" value="Salvar!" onclick="salvarInfo()" />
+            </section>
+            <section>
+                <h3>Pesquisa BD</h3>
+                <input
+                    type="text"
+                    id="pesquisa-nome-usuario"
+                    placeholder="Nome"
+                />
+                <input
+                    type="button"
+                    value="Pesquisar!"
+                    onclick="pesquisaPorNome()"
+                />
+                <input
+                    type="text"
+                    id="resultado-pesquisa"
+                    placeholder="Resultado idade..."
+                    readonly
+                />
+            </section>
+            <section>
+                <h3>Exibe Banco de Dados</h3>
+                <input type ="button" value="Exibir!" onclick="exibeBD()">
+                <div id="lista-bd"></div>
+            </section>
+        </main>
+    </body>

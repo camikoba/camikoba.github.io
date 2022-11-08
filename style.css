@@ -1,0 +1,38 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,500&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Lora', serif;
+}
+header {
+    background-color: rgb(245, 188, 224);
+    margin: 40px;
+    padding: 20px;
+    justify-content: center;
+    font-style: italic;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
+header:hover {
+    background-color: rgb(145, 197, 228);
+}
+main {
+    display: flex;
+    margin: 0px 50px;
+    /* margin: c 0px d 10px b 20px e 80px; */
+    flex-wrap: wrap;
+}
+section {
+    background-color: rgb(199, 159, 237);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+input {
+    text-align: center;
+}
+
