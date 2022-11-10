@@ -1,7 +1,7 @@
 var bd = openDatabase("meuBD", "1.0", "Meu Banco de Dados", 4080);
 
 bd.transaction(function (criar) {
-    criar.executeSql("CREATE TABLE formulario (nome TEXT, idade INTEGER)");
+    criar.executeSql("CREATE TABLE formulario (nome TEXT, idade INTEGER, e-mail TEXT)");
 });
 
 function salvarInfo() {
@@ -10,17 +10,19 @@ function salvarInfo() {
         .value.toUpperCase();
     const idadeUsuario = parseInt(
         document.getElementById("idade-usuario").value
+
+    const emailUsuario = document.getElementById("email-usuario").value
     );
 
-    if (nomeUsuario === "" || isNaN(idadeUsuario)) {
+    if (nomeUsuario === "" || isNaN(idadeUsuario || emailUsuario === "")) {
         alert("Faltam informações!");
         return false;
     }
 
     bd.transaction(function (inserir) {
         inserir.executeSql(
-            "INSERT INTO formulario (nome, idade) VALUES (?, ?)",
-            [nomeUsuario, idadeUsuario]
+            "INSERT INTO formulario (nome, idade, e-mail) VALUES (?, ?, ?)",
+            [nomeUsuario, idadeUsuario, emailUsuario]
         );
     });
     document.getElementById("nome-usuario").value = "";
@@ -68,9 +70,26 @@ function exibeBD() {
                     item = resultados.rows.item(i);
                     document.getElementById(
                         "lista-bd"
-                    ).innerHTML += `<p>Nome: ${item.nome}, ${item.idade} anos</p>`;
+                    ).innerHTML += `<p onclick="mostrarCartaoAltera('${item.nome}', ${item.idade})">Nome: ${item.nome}, ${item.idade} anos</p>`;
                 }
             }
         );
     });
+}
+
+function alteraInfo() {
+    const novoNome = document.getElementById("nome-alteracao").value;
+    const novaIdade = parseInt(document.getElementById("idade-alteracao").value);
+
+    bd.transaction(function(altera){
+        altera.executeSql(`UPDATE formulario SET nome="${novoNome}", idade=${novaIdade} WHERE nome="${nomeAtualParaEditar}" AND idade=${idadeAtualParaEditar}`);
+    });
+    exibeBD();
+}
+
+function excluiInfo() {
+    bd.transaction(function(altera){
+        altera.executeSql(`DELETE FROM formulario WHERE nome="${nomeAtualParaEditar}" AND idade=${idadeAtualParaEditar}`);
+    });
+    exibeBD();
 }
