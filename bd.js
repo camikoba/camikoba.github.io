@@ -87,7 +87,7 @@ function exibeBD() {
                     item = resultados.rows.item(i);
                     document.getElementById(
                         "lista-bd"
-                    ).innerHTML += `<p onclick="mostrarCartaoAltera('${item.nome}', ${item.idade}')">Nome: ${item.nome}, ${item.idade} anos</p>`;
+                    ).innerHTML += `<p onclick="mostrarCartaoAltera('${item.nome}', '${item.idade}')">Nome: ${item.nome}, ${item.idade} anos</p>`;
                 }
             }
         );
